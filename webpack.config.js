@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-
+const { CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
     // Entry nos permite decir el punto de entrada de nuestra aplicación
@@ -16,7 +16,7 @@ module.exports = {
     // Con path.resolve podemos decir dónde va estar la carpeta y la ubicación del mismo
         path: path.resolve(__dirname, 'dist'),
         // filename le pone el nombre al archivo final
-        filename: '[mane].[contenthash].js',
+        filename: '[name].[contenthash].js',
         assetModuleFilename: 'assets/images/[hash][ext][query]'
     },
     resolve: {
@@ -83,6 +83,7 @@ module.exports = {
             ]
         }),
         new Dotenv(),
+        new CleanWebpackPlugin(),
     ],
     optimization: {
         minimize: true,

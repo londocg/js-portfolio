@@ -43,7 +43,7 @@ module.exports = {
                 test: /\.(woff|woff2)$/,
                 use:{
                     loader: 'url-loader',
-                    Option: {
+                    options: {
                         limit: 10000,
                         mimetype: "application/font-woff",
                         name: "[name].[ext]",

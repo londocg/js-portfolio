@@ -13,6 +13,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         // filename le pone el nombre al archivo final
         filename: 'main.js',
+        assetModuleFilename: 'assets/images/[hash][ext][query]'
     },
     resolve: {
         // Aqui ponemos las extensiones que tendremos en nuestro proyecto para webpack los lea
@@ -37,6 +38,20 @@ module.exports = {
             {
                 test: /\.png/,
                 type: 'asset/resource'
+            },
+            {
+                test: /\.(woff|woff2)$/,
+                use:{
+                    loader: 'url-loader',
+                    Option: {
+                        limit: 10000,
+                        mimetype: "application/font-woff",
+                        name: "[name].[ext]",
+                        outputPath: "./assets/fonts/",
+                        publicPath: "./assets/fonts/",
+                        esModule: false,
+                    },
+                }
             }
         ]
     },
